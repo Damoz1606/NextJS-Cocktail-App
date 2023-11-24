@@ -26,8 +26,8 @@ const CocktailCard: React.FC = () => {
                 for (const key in responseCocktail) {
                     if (key.startsWith("strIngredient") && responseCocktail[key]) {
                         const count = key.split("strIngredient")[1];
-                        const measure: string = responseCocktail[`strMeasure${count}`]
-                        responseIngredients.push(`${measure.toLocaleLowerCase()} - ${responseCocktail[key]}`);
+                        const measure = responseCocktail[`strMeasure${count}`] ? `${responseCocktail[`strMeasure${count}`]} - ` : "";
+                        responseIngredients.push(`${measure.toLocaleLowerCase()}${responseCocktail[key]}`);
                     }
                 }
                 setIngredients(responseIngredients);
@@ -62,11 +62,11 @@ const CocktailCard: React.FC = () => {
                                 <div className={style.cocktail_features}>
                                     <h4 className={style.title}>Ingredients</h4>
                                     <div className={`${style.ingredient_box}`}>
-                                    {
-                                        ingredients.map((e, i) => (
-                                            <p className={`${style.text} ${style.ingredient}`} key={i}>{e}</p>
-                                        ))
-                                    }
+                                        {
+                                            ingredients.map((e, i) => (
+                                                <p className={`${style.text} ${style.ingredient}`} key={i}>{e}</p>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className={style.cocktail_features}>
@@ -75,8 +75,13 @@ const CocktailCard: React.FC = () => {
                                 </div>
                             </> :
                             <>
-                                <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                    Not found cocktail
+                                <div className={style.not_found} style={{ marginTop: "1rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                    </svg>
+                                    <div className={style.text}>
+                                        <h4>Please look for a Cocktail</h4>
+                                    </div>
                                 </div>
                             </>
                     }
