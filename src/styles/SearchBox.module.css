@@ -1,0 +1,92 @@
+.container.button_type {
+    background-color: var(--primary-hex);
+    width: 32px;
+    height: 32px;
+}
+
+.container.button_type svg {
+    stroke: white;
+    width: 20px;
+    height: 20px;
+}
+
+.container.active.button_type {
+    background-color: transparent;
+}
+
+.container.active.button_type svg {
+    stroke: var(--foreground-hex);
+}
+
+
+.container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: auto;
+
+    display: grid;
+    grid-template-columns: 100% 0% 0%;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+    border: 2px solid transparent;
+
+    transition: all .3s ease-in;
+}
+
+
+.container.active {
+    width: 100%;
+    height: 47px;
+
+    grid-template-columns: 10% 80% 10%;
+
+    border: 2px solid rgba(128, 128, 128, 0.3);
+    border-radius: var(--border-radius);
+    padding: 0rem 0.5rem;
+    gap: 5px;
+    cursor: auto;
+
+    transition: all .3s ease-out;
+}
+
+.container svg {
+    stroke-width: 2px;
+}
+
+.container.active svg {
+    width: 24px;
+    height: 24px;
+}
+
+.container.active div.search svg {
+    stroke: rgba(128, 128, 128, 0.638);
+}
+
+.container.active button.close,
+.container div.search {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container.active button.close {
+    cursor: pointer;
+}
+
+.container button.close,
+.container input[type=text] {
+    all: unset;
+    width: 0px;
+    transition: width .3s ease-in;
+}
+
+.container.active input[type=text] {
+    width: 100%;
+    padding: 0.75rem 0;
+}
